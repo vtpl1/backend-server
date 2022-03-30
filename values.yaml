@@ -119,9 +119,10 @@ controller:
 #      addresses:
 #      - 198.168.3.230-198.168.3.231
 
-configInline:
-  address-pools:
-   - name: default
-     protocol: layer2
-     addresses:
-      - 198.51.100.0/24
+# configInline:
+#   address-pools:
+#    - name: default
+#      protocol: layer2
+#      addresses:
+#       - 198.168.3.230-198.168.3.231
+#       #- 198.51.100.0/24
