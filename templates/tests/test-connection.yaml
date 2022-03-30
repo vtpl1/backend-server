@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "backend_server.fullname" . }}-test-connection"
+  name: "{{ include "backend-server.fullname" . }}-test-connection"
   labels:
-    {{- include "backend_server.labels" . | nindent 4 }}
+    {{- include "backend-server.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
 spec:
@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "backend_server.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "backend-server.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never
