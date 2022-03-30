@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "backend-server.fullname" . }}
-  labels:
-    {{- include "backend-server.labels" . | nindent 4 }}
+  name: backend-server-service
 spec:
-  type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
+    - name: http-web-svc-port
+      port: 80
+      targetPort: http-web-port
       protocol: TCP
-      name: http
+  type: NodePort
   selector:
-    {{- include "backend-server.selectorLabels" . | nindent 4 }}
+    app: nginx
+  externalIPs:  # ref:https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#over-a-nodeport-service
+  - 192.168.49.2
