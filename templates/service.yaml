@@ -8,8 +8,8 @@ spec:
       port: 80
       targetPort: http-web-port
       protocol: TCP
-  type: NodePort
+  # type: NodePort
   selector:
     app: nginx
-  externalIPs:  # ref:https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#over-a-nodeport-service
-  - 192.168.49.2
+  # externalIPs:  # ref:https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#over-a-nodeport-service
+  # - 192.168.49.2
