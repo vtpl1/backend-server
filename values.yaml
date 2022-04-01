@@ -17,3 +17,5 @@ metallb:
       protocol: layer2
       addresses:
       - 192.168.3.96/29
+mongodb:
+  architecture: "replicaset"
