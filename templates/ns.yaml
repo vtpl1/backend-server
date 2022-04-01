@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: vcpaas
+  labels:
+    app.kubernetes.io/name: vcpaas
+    app.kubernetes.io/part-of: vcpaas
