@@ -32,8 +32,8 @@ dependencies:
     version: 4.x.x
   - name: mongodb
     repository: https://charts.bitnami.com/bitnami
-    version: 4.x.x
-  # - name: rabbitmq
-  #   repository: https://charts.bitnami.com/bitnami
-  #   version: 3.x.x
+    version: 11.x.x
+  - name: rabbitmq
+    repository: https://charts.bitnami.com/bitnami
+    version: 8.x.x
     
