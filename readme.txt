@@ -12,7 +12,7 @@ helm dependency update
 helm install backend-server .
 
 #=============================
-minikube start --kubernetes-version=v1.21.9
+minikube start --kubernetes-version=v1.21.9 --nodes 2
 minikube addons list
 minikube addons enable metallb
 minikube addons configure metallb
