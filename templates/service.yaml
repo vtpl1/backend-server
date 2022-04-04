@@ -4,7 +4,7 @@ metadata:
   name: backend-server-service
 spec:
   ports:
-    - name: http-web-svc-port
+    - name: http-svc-port
       port: 80
       targetPort: http-web-port
       protocol: TCP

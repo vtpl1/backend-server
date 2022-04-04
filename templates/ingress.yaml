@@ -2,16 +2,23 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: backend-server-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-  - host: master.videonetics.com
-    http:
-      paths:
-        - path: /
-          pathType: ImplementationSpecific          
-          backend:
-            service:
-              name: backend-server-service
-              port:
-                number: 80
+    - host: master.videonetics.com
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: backend-server-service
+                port:
+                  name: http-svc-port
+                  # number: 80
+  tls:
+    - hosts:
+        - master.videonetics.com
+      secretName: backend-server-secret

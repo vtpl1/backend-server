@@ -2,8 +2,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
-
 image:
   repository: nginx
   pullPolicy: IfNotPresent
@@ -16,6 +14,7 @@ metallb:
     - name: default
       protocol: layer2
       addresses:
-      - 192.168.3.96/29
+      # - 192.168.3.96-192.168.3.97
+      - 192.168.49.96/29
 mongodb:
   architecture: "replicaset"
