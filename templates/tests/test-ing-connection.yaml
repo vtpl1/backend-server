@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "backend-server-test-connection"
+  name: "backend-server-ing-test-connection"
   labels:
     app: nginx
   annotations:
@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['backend-server-service:80']
+      args: ['master.videonetics.com']
   restartPolicy: Never

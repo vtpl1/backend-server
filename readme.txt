@@ -18,3 +18,7 @@ minikube addons enable metallb
 minikube addons configure metallb
 helm list
 helm upgrade backend-server . --install
+
+kubectl create secret tls videonetics-tls-secret -n default --key secrets/videonetics.key --cert secrets/videonetics.crt
+
+base64 -w0 secrets/videonetics.crt

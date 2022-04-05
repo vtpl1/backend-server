@@ -6,8 +6,12 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - master.{{ .Values.vcpaasdomain }}
+    secretName: videonetics-tls-secret
   rules:
-    - host: master.videonetics.com
+    - host: master.{{ .Values.vcpaasdomain }}
       http:
         paths:
           - path: /
@@ -17,8 +21,51 @@ spec:
                 name: backend-server-service
                 port:
                   name: http-svc-port
-                  # number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-rabbitmq-mqtt
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
   tls:
-    - hosts:
-        - master.videonetics.com
-      secretName: backend-server-secret
+  - hosts:
+    - mqtt.{{ .Values.vcpaasdomain }}
+    secretName: videonetics-tls-secret
+  rules:
+  - host: mqtt.{{ .Values.vcpaasdomain }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Release.Name }}-rabbitmq
+            port:
+              number: 15675
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-rabbitmq-stomp
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - stomp.{{ .Values.vcpaasdomain }}
+    secretName: videonetics-tls-secret
+  rules:
+  - host: stomp.{{ .Values.vcpaasdomain }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Release.Name }}-rabbitmq
+            port:
+              number: 15674

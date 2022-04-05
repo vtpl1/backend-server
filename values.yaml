@@ -2,6 +2,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+vcpaasdomain: videonetics.com
+
 image:
   repository: nginx
   pullPolicy: IfNotPresent
@@ -11,10 +13,19 @@ image:
 metallb:
   configInline:
     address-pools:
-    - name: default
-      protocol: layer2
-      addresses:
-      # - 192.168.3.96-192.168.3.97
-      - 192.168.49.96/29
+      - name: default
+        protocol: layer2
+        addresses:
+          # - 192.168.3.96-192.168.3.97
+          - 192.168.49.96/29
 mongodb:
   architecture: "replicaset"
+rabbitmq:
+  replicaCount: 1
+  persistence:
+    enabled: false
+  auth:
+    username: admin
+    password: admin
+    erlangCookie: admin
+  extraPlugins: "rabbitmq_mqtt rabbitmq_web_mqtt rabbitmq_stomp rabbitmq_web_stomp"
