@@ -3,3 +3,5 @@ charts/
 Chart.lock
 *.crt
 *.key
+secrets/
+downloads/

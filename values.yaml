@@ -18,6 +18,7 @@ metallb:
         addresses:
           # - 192.168.3.96-192.168.3.97
           - 192.168.49.96/29
+          # - 172.16.4.96/29
 mongodb:
   architecture: "replicaset"
 rabbitmq:
